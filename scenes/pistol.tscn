@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1b1tqv1t6y40"]
+
+[ext_resource type="Script" path="res://scripts/pistol.gd" id="1_k70k1"]
+[ext_resource type="Texture2D" uid="uid://xxnrjhl8jbe4" path="res://assets/items/weapons/drone-Sheet.png" id="2_g20fc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alrej"]
+radius = 7.44226
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c01k7"]
+atlas = ExtResource("2_g20fc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3gh"]
+atlas = ExtResource("2_g20fc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbi56"]
+atlas = ExtResource("2_g20fc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5a8v"]
+atlas = ExtResource("2_g20fc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsd2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c01k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbi56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5a8v")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="pistol" type="Area2D"]
+scale = Vector2(0.403103, 0.387703)
+collision_mask = 2
+script = ExtResource("1_k70k1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_alrej")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(12.4038, 0)
+scale = Vector2(1.60524, 1.74242)
+sprite_frames = SubResource("SpriteFrames_wsd2a")
+animation = &"shoot"
+autoplay = "shoot"
+frame_progress = 0.309264
+
+[node name="ShootingPoint" type="Marker2D" parent="Sprite"]
+unique_name_in_owner = true
+position = Vector2(9.272, -0.5)
+scale = Vector2(868.81, -1.09493)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

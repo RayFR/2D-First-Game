@@ -1,0 +1,147 @@
+[gd_scene load_steps=22 format=3 uid="uid://b13q1nheg3s0n"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_3rcrb"]
+[ext_resource type="Texture2D" uid="uid://ds1ttkcuit883" path="res://assets/characters/war robot/war robot side on-Sheet.png" id="2_bsm6v"]
+[ext_resource type="Texture2D" uid="uid://bgpc7xyw6f2ho" path="res://assets/characters/war robot/war robot side on run-Sheet.png" id="3_3sd6h"]
+[ext_resource type="Texture2D" uid="uid://dt4j8lw4sho5s" path="res://assets/characters/war robot/war robot side on-jumpSheet.png" id="3_5taj4"]
+[ext_resource type="PackedScene" uid="uid://c1b1tqv1t6y40" path="res://scenes/pistol.tscn" id="5_r838p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mbkm"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taaa3"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr8bk"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytmxo"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvaxh"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h5xn"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcwtw"]
+atlas = ExtResource("2_bsm6v")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0do7"]
+atlas = ExtResource("3_5taj4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2japp"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36hh0"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amyps"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmnng"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii6qr"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxeqx"]
+atlas = ExtResource("3_3sd6h")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jeg1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mbkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taaa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr8bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytmxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvaxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h5xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcwtw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0do7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2japp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36hh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amyps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmnng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii6qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxeqx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2y78"]
+radius = 3.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_3rcrb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, -3)
+sprite_frames = SubResource("SpriteFrames_jeg1m")
+animation = &"run"
+offset = Vector2(-34, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(1, 2.16)
+shape = SubResource("CapsuleShape2D_o2y78")
+
+[node name="pistol" parent="." instance=ExtResource("5_r838p")]
+position = Vector2(7, -5)
+
+[editable path="pistol"]

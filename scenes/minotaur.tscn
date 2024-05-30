@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://5wkcpk0j0ykp"]
+
+[ext_resource type="Texture2D" uid="uid://805nhpelw280" path="res://assets/enemies/Minotaur - Sprite Sheet.png" id="1_rn2iu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jstkp"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(0, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tdq5"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(95, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8vp"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(190, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k87d7"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(285, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vgdu"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(380, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfw15"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(475, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43ibk"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(570, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx3ax"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(665, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3wne"]
+atlas = ExtResource("1_rn2iu")
+region = Rect2(760, 288, 95, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orne4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jstkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tdq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k87d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vgdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfw15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43ibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx3ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3wne")
+}],
+"loop": true,
+"name": &"attack1",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_joq7n"]
+radius = 17.0289
+height = 38.0526
+
+[node name="minotaur" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_orne4")
+animation = &"attack1"
+autoplay = "attack1"
+frame_progress = 0.623714
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(5, -4)
+rotation = 0.0516029
+shape = SubResource("CapsuleShape2D_joq7n")

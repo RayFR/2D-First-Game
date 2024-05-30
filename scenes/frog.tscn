@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://7hl3v4tgm40f"]
+
+[ext_resource type="Script" path="res://scripts/frog.gd" id="1_35onj"]
+[ext_resource type="Texture2D" uid="uid://bjngcuc4wd7j6" path="res://assets/characters/GreenBlue/ToxicFrogGreenBlue_Idle.png" id="1_t14bu"]
+[ext_resource type="PackedScene" uid="uid://c1qouwljpvdsc" path="res://scenes/killzone.tscn" id="2_xnsht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2afl"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx2b3"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgttn"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_172qt"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2c0f"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip0uu"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnjy5"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2pfj"]
+atlas = ExtResource("1_t14bu")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckqec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2afl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx2b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgttn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_172qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2c0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip0uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnjy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2pfj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcc88"]
+radius = 8.06226
+
+[node name="frog" type="Node2D"]
+script = ExtResource("1_35onj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ckqec")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.396177
+
+[node name="killzone" parent="." instance=ExtResource("2_xnsht")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-186, -38)
+shape = SubResource("CircleShape2D_tcc88")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(5.72205e-06, -2.38419e-07)
+rotation = -3.1256
+target_position = Vector2(14.9981, -0.239896)
